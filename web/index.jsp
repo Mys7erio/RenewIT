@@ -24,7 +24,7 @@
 			<label for="password">Password</label>
 			<input type="password" name="password" id="password" placeholder="">
 			<div class="forgot">
-				<!--<a rel="noopener noreferrer" href="#">Forgot Password ?</a>-->
+				
 			</div>
 		</div>
 		<button class="sign" >Sign in</button>
