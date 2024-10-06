@@ -4,12 +4,16 @@
  */
 package com.renewit.controllers;
 
+import com.renewit.dao.ConnectionPool;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import com.renewit.pojo.User;
+import com.renewit.dao.UserDAO;
+import java.sql.Connection;
 
 /**
  *
@@ -55,7 +59,38 @@ public class UserProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String userIdParam = request.getParameter("id");
+
+        if (userIdParam == null || userIdParam.isEmpty()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "User ID is required");
+            return;
+        }
+
+        int userId;
+        try {
+            userId = Integer.parseInt(userIdParam);
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid User ID");
+            return;
+        }
+
+        UserDAO userDAO = new UserDAO();
+        User user = null;
+
+        try (Connection connection = ConnectionPool.getInstance().getConnection()) {
+            user = userDAO.findUserById(connection, userId); // Assuming a findUserById method is created
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error");
+            return;
+        }
+
+        if (user != null) {
+            request.setAttribute("user", user);
+            request.getRequestDispatcher("/userProfile.jsp").forward(request, response);
+        } else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "User not found");
+        }
     }
 
     /**
