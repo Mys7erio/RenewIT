@@ -18,7 +18,7 @@
 
 <div class="container">
     <h1>Electronic Repair Request Form</h1>
-    <form action="" method="post">
+    <form action="BookingServlet" method="post">
         
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
