@@ -18,7 +18,7 @@
 
 <div class="container">
     <h1>Electronic Repair Request Form</h1>
-    <form action="submit_request.jsp" method="post">
+    <form action="" method="post">
         
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
