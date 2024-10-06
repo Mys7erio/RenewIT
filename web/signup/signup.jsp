@@ -14,35 +14,31 @@
     </head>
     <body>
        
-<form class="form">
+<form class="form" action="RegisterServlet" method="POST">
     <p class="title">Register </p>
         <div class="flex">
         <label>
-            <input class="input" type="text" placeholder="" required="">
-            <span>Firstname</span>
+            <input class="input" type="text" name="firstname" placeholder="" required="">
+            <span>Username</span>
         </label>
 
-        <label>
-            <input class="input" type="text" placeholder="" required="">
-            <span>Lastname</span>
-        </label>
     </div>  
             
     <label>
-        <input class="input" type="email" placeholder="" required="">
+        <input class="input" type="email" name="email" placeholder="" required="">
         <span>Email</span>
     </label> 
         
     <label>
-        <input class="input" type="password" placeholder="" required="">
+        <input class="input" type="password" name="password" placeholder="" required="">
         <span>Password</span>
     </label>
     <label>
         <input class="input" type="password" placeholder="" required="">
         <span>Confirm password</span>
     </label>
-    <button class="submit">Submit</button>
-    <p class="signin">Already have an account ? <a href="#">Signin</a> </p>
+    <button class="submit" type="submit">Submit</button>
+    <p class="signin">Already have an account ? <a href="#">Sign In</a> </p>
 </form>
     </body>
 </html>
