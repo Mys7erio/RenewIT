@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="./loginPage/login.css"/>
+        <link rel="stylesheet" href="./index.css"/>
     </head>
     <body class="login-div">
        <div class="form-container">
@@ -31,7 +32,7 @@
         </form>
 	
 	<p class="signup">Don't have an account?
-		<a rel="noopener noreferrer" href="./signup/signup.jsp" class="">Sign up</a>
+		<a rel="noopener noreferrer" href="./homePage/homePage.jsp" class="">Sign up</a>
 	</p>
 </div>
     </body>

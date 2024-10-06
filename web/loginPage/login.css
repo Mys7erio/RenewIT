@@ -11,6 +11,7 @@ html form .login-div{
 }
 .form-container {
   width: 320px;
+  border: 2px solid rgba(160, 157, 159, 0.28);
   border-radius: 0.75rem;
   background-color: rgba(17, 24, 39, 1);
   padding: 2rem;
@@ -89,20 +90,6 @@ html form .login-div{
   height: 1px;
   flex: 1 1 0%;
   background-color: rgba(55, 65, 81, 1);
-}
-
-.social-icons .icon {
-  border-radius: 0.125rem;
-  padding: 0.75rem;
-  border: none;
-  background-color: transparent;
-  margin-left: 8px;
-}
-
-.social-icons .icon svg {
-  height: 1.25rem;
-  width: 1.25rem;
-  fill: #fff;
 }
 
 .signup {

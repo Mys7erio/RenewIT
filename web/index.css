@@ -1,0 +1,52 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 6 Oct 2024, 5:02:30 pm
+    Author     : sanka
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap");
+
+html{
+    background-color: rgba(17, 24, 39, 1);
+    color:whitesmoke;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body nav ul li a{
+    color:whitesmoke;
+    text-decoration: none;
+}
+nav {
+  /*position: fixed;  Make the navigation bar fixed to the top */
+  top: 0;
+  right: 0;
+  /*width: 100%;  Make it full width */
+  /*background-color: #fff;  Set a background color */
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav li {
+  padding: 20px;
+}
+
+body .company-name{
+ position: fixed;
+ padding: 10px;
+ top: 0;
+ left: 0;   
+}
+
+nav li.nav-item {
+  display: flex; /* Make the container a flex container */
+  justify-content: flex-start; /* Align elements to the right */
+}
