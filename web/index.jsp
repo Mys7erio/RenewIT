@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="./index.css"/>
     </head>
     <body class="login-div">
+        <h3 class="company-name">RENEWIT</h3>
        <div class="form-container">
 	<p class="title">Login</p>
 	<form class="form" action="LoginServlet" method="POST">
