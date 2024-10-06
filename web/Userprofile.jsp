@@ -32,9 +32,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <div class="repair-status">
         <h2>Repair Progress</h2>
         <div class="progress-bar">
-            <div class="progress" style="width: 70%;"></div> <!-- Example: 70% completed -->
+            <!--${status}-->
+            
+            <div class="progress" style="width: ${status=="completed"?"100%":("pending"?"0%":"50%")};"></div>  
+            <!--Example: 70% completed--> 
         </div>
-        <p><strong>Status:</strong> In Progress (70%)</p>
+        <p><strong>Status:</strong> ${status}</p>
     </div>
 
     <div class="cost-details">
