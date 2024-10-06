@@ -19,7 +19,6 @@ Document   : homePage
             
             <ul>
                 <li class="nav-item"><a href="#">Services</a></li>
-                <li class="nav-item"><a href="#">Bookings</a></li>
                 <li class="nav-item"><a href="UserProfileServlet">Profile</a></li>
 
             </ul>
