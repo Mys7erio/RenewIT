@@ -1,0 +1,54 @@
+/* CSS for the admin dashboard */
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: rgba(31, 41, 55, 1); /* Slightly lighter for card */
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.status-dropdown {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.status-dropdown select {
+    padding: 5px;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid rgba(75, 85, 99, 1); /* Dark border */
+    background-color: rgba(31, 41, 55, 1); /* Dropdown background */
+    color: rgba(243, 244, 246, 1); /* Dropdown text color */
+}
+
+.submit-btn {
+    background-color: rgba(167, 139, 250, 1); /* Button color */
+    color: rgba(243, 244, 246, 1); /* Button text color */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.submit-btn:hover {
+    background-color: rgba(139, 92, 246, 1); /* Darker shade on hover */
+}
+
