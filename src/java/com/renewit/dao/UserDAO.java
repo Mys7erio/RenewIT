@@ -68,6 +68,33 @@ public class UserDAO {
         } 
         return user;
     }
+    
+    // Method to find a user by ID
+public User findUserById(Connection connection, int id) {
+    User user = null;
+    try {
+        String query = "SELECT * FROM users WHERE id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                user = new User(
+                    rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getString("password"),
+                    rs.getString("email"),
+                    rs.getString("address"),
+                    rs.getString("phone"),
+                    rs.getString("urole"),
+                    rs.getTimestamp("created_at")
+                );
+            }
+        }
+    } catch (SQLException e) {
+        System.err.println("Error finding user: " + e.getMessage());
+    }
+    return user;
+}
 
     // Method to retrieve all users
     public List<User> getAllUsers() {

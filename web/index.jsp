@@ -16,7 +16,7 @@
     <body class="login-div">
        <div class="form-container">
 	<p class="title">Login</p>
-	<form class="form" action="LoginServlet/" method="POST">
+	<form class="form" action="LoginServlet" method="POST">
 		<div class="input-group">
 			<label for="username">Username</label>
 			<input type="text" name="username" id="username" placeholder="">

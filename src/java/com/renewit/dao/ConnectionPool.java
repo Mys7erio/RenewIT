@@ -14,9 +14,9 @@ import java.sql.SQLException;
 
 public class ConnectionPool {
     private static ConnectionPool instance;
-    private static final String URL = ""; // Update with your database URL
-    private static final String USER = ""; // Update with your database username
-    private static final String PASSWORD = ""; // Update with your database password
+    private static final String URL = "jdbc:postgresql://ep-soft-base-a1u5sikv.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require"; // Update with your database URL
+    private static final String USER = "default"; // Update with your database username
+    private static final String PASSWORD = "ROwIpNm2CsG1"; // Update with your database password
     private Connection connection;
 
     // Private constructor to prevent instantiation

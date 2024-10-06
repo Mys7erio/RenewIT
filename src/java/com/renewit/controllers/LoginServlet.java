@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import com.renewit.pojo.User;
+import java.io.PrintWriter;
 import com.renewit.dao.UserDAO;
 
 
@@ -38,21 +39,22 @@ public class LoginServlet extends HttpServlet {
 
         // Find user by name
         User user = userDAO.findUserByName(username);
+        PrintWriter out = response.getWriter();
+                    out.println(user.getName());
+                    out.println(user.getPassword());
+                    out.println(username);
+                    out.println(password);
 
-        // Validate user credentials
-        if (user != null && (password==user.getPassword())) {
+        if (user != null && (password.equals(user.getPassword()))) {
             // Create session and store user details
             HttpSession session = request.getSession();
             session.setAttribute("userId", user.getId());
             session.setAttribute("username", user.getName());
             session.setAttribute("urole", user.getUrole());
-
-            // Redirect to dashboard or home page
-            response.sendRedirect("dashboard.jsp");
+            response.sendRedirect("homePage.jsp");
         } else {
-            // Invalid login, set error message
             request.setAttribute("errorMessage", "Invalid username or password.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 
