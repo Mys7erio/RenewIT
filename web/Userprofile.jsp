@@ -14,7 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <head>
 
     <title>User Profile - Repair Status</title>
-    <link rel="stylesheet" href="Userprofile.css">
+    <link rel="stylesheet" href="styles/Userprofile.css">
 </head>
 <body>
 

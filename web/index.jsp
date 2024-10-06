@@ -9,12 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="stylesheet" href="./loginPage/login.css"/>
+        <title>RenewIT</title>
+        <link rel="stylesheet" href="styles/login.css"/>
         <link rel="stylesheet" href="./index.css"/>
     </head>
     <body class="login-div">
-        <h3 class="company-name">RENEWIT</h3>
+        <h3 class="company-name">RenewIT</h3>
        <div class="form-container">
 	<p class="title">Login</p>
 	<form class="form" action="LoginServlet" method="POST">
@@ -33,7 +33,7 @@
         </form>
 	
 	<p class="signup">Don't have an account?
-		<a rel="noopener noreferrer" href="./signup/signup.jsp" class="">Sign up</a>
+		<a rel="noopener noreferrer" href="signup.jsp" class="">Sign up</a>
 	</p>
 </div>
     </body>

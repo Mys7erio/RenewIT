@@ -9,12 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="stylesheet" href="signup.css"/>
-        <link rel="stylesheet" href="../index.css" />
+        <title>RenewIT | Sign UP</title>
+        <link rel="stylesheet" href="styles/signup.css"/>
+        <link rel="stylesheet" href="index.css" />
     </head>
     <body>
-        <h3 class="company-name">RENEWIT</h3>
+        <h3 class="company-name">RenewIT</h3>
 <form class="form" action="RegisterServlet" method="POST">
     <p class="title">Register </p>
         <div class="flex">

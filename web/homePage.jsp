@@ -9,12 +9,12 @@ Document   : homePage
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="./homePage.css"/>
-        <link rel="stylesheet" href="../index.css" />
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="styles/homePage.css"/>
+        <link rel="stylesheet" href="index.css" />
+        <title>RenewIT | Request Services</title>
     </head>
     <body>
-        <h3 class="company-name">RENEWIT</h3>
+        <h3 class="company-name">RenewIT</h3>
         <nav>
             
             <ul>
@@ -24,7 +24,7 @@ Document   : homePage
 
             </ul>
         </nav>
-        <h1><img class="homepage-img" src="./tools.svg" alt="tools and services svg file"/> 
+        <h1><img class="homepage-img" src="styles/tools.svg" alt="services"/> 
             SERVICES</h1>
         <h3>Expert Tech Support for All Your Devices.</h3>
         <div class="homepage-div">
