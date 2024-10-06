@@ -28,8 +28,7 @@ nav {
   top: 0;
   right: 0;
   /*width: 100%;  Make it full width */
-
-body .company-name{
+}
 .homepage .company-name{
  position: fixed;
  padding: 10px;

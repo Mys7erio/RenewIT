@@ -33,8 +33,13 @@
         <label for="phone">Phone Number:</label>
         <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
 
+        <label for="Devicemodel">Device Model:</label>
+        <input type="text" id="devicemodel" name="device" required>
+        
+        <label for="Address">Address:</label>
+        <textarea id="Address" name="addess" rows="2" placeholder="Type your address" required></textarea>
 
-
+        
         <label for="issue">Issue Description:</label>
         <textarea id="issue" name="issue" rows="4" placeholder="Describe the problem with your device..." required></textarea>
 
