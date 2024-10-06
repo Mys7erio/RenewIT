@@ -39,7 +39,7 @@
         <span>Confirm password</span>
     </label>
     <button class="submit" type="submit">Submit</button>
-    <p class="signin">Already have an account ? <a href="../index.jsp">Sign In</a> </p>
+    <p class="signin">Already have an account ? <a href="./index.jsp">Sign In</a> </p>
 </form>
     </body>
 </html>
