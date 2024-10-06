@@ -77,6 +77,7 @@ p {
 /* CARD COMPONENT */
 
 .card {
+  border:2px solid rgb(167,139,250,2);
   display: grid;
   place-items: center;
   width: 80vw;
