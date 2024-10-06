@@ -13,7 +13,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.renewit.pojo.User;
 import com.renewit.dao.UserDAO;
+import com.renewit.dao.AppointmentDAO;
+import jakarta.servlet.http.HttpSession;
 import java.sql.Connection;
+import com.renewit.pojo.Appointment;
 
 /**
  *
@@ -59,35 +62,47 @@ public class UserProfileServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userIdParam = request.getParameter("id");
+        
+         // Get the session object
+        HttpSession session = request.getSession();
 
-        if (userIdParam == null || userIdParam.isEmpty()) {
+        // Retrieve a session variable
+        Integer userId = (Integer) session.getAttribute("userId");
+                
+
+        if (userId == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "User ID is required");
             return;
         }
 
-        int userId;
-        try {
-            userId = Integer.parseInt(userIdParam);
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid User ID");
-            return;
-        }
+//        try {
+//            userId = Integer.parseInt(userId);
+//        } catch (NumberFormatException e) {
+//            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid User ID");
+//            return;
+//        }
 
         UserDAO userDAO = new UserDAO();
+        AppointmentDAO appDAO= new AppointmentDAO();
         User user = null;
+        Appointment app=null; 
 
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             user = userDAO.findUserById(connection, userId); // Assuming a findUserById method is created
+            app = appDAO.getAppointmentByUserId(userId);
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error");
             return;
         }
 
-        if (user != null) {
-            request.setAttribute("user", user);
-            request.getRequestDispatcher("/userProfile.jsp").forward(request, response);
+        if (user != null && app!=null) {
+            request.setAttribute("name", user.getName());
+            request.setAttribute("email", user.getEmail());
+            request.setAttribute("phoneNumber", user.getPhone());
+            request.setAttribute("itemType", app.getItemType());
+            
+            request.getRequestDispatcher("/Userprofile.jsp").forward(request, response);
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "User not found");
         }

@@ -23,10 +23,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     
     <div class="user-info">
         <h2>User Information</h2>
-        <p><strong>Full Name:</strong> John Doe</p>
-        <p><strong>Email:</strong> johndoe@example.com</p>
-        <p><strong>Phone Number:</strong> 1234567890</p>
-        <p><strong>Device Type:</strong> Laptop</p>
+        <p><strong>Full Name:</strong>${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone Number:</strong>${phoneNumber}</p>
+        <p><strong>Device Type:</strong>${itemType}</p>
     </div>
     
     <div class="repair-status">

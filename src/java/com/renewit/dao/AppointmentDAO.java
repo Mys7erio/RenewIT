@@ -47,6 +47,23 @@ public class AppointmentDAO {
         }
         return null;
     }
+    
+        // Method to get an appointment by user ID
+    public Appointment getAppointmentByUserId(int uid) {
+        String sql = "SELECT * FROM appointments WHERE uid = ?";
+        try (Connection conn = ConnectionPool.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, uid);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new Appointment(rs.getInt("aid"), rs.getInt("uid"), rs.getString("item_type"), 
+                                       rs.getString("status"), rs.getDouble("repair_cost"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     // Method to get all appointments
     public List<Appointment> getAllAppointments() {
