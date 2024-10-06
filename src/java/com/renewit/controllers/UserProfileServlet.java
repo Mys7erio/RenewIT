@@ -101,6 +101,7 @@ public class UserProfileServlet extends HttpServlet {
             request.setAttribute("email", user.getEmail());
             request.setAttribute("phoneNumber", user.getPhone());
             request.setAttribute("itemType", app.getItemType());
+            request.setAttribute("status",app.getStatus());
             
             request.getRequestDispatcher("/Userprofile.jsp").forward(request, response);
         } else {
