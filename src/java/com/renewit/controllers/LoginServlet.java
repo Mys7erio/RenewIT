@@ -48,10 +48,15 @@ public class LoginServlet extends HttpServlet {
         if (user != null && (password.equals(user.getPassword()))) {
             // Create session and store user details
             HttpSession session = request.getSession();
+
             session.setAttribute("userId", user.getId());
             session.setAttribute("username", user.getName());
             session.setAttribute("urole", user.getUrole());
+            if(user.getUrole().equals("admin")){
+                response.sendRedirect("dashboard.jsp");
+            }else{
             response.sendRedirect("homePage.jsp");
+            }
         } else {
             request.setAttribute("errorMessage", "Invalid username or password.");
             request.getRequestDispatcher("index.jsp").forward(request, response);

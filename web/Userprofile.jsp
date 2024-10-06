@@ -34,7 +34,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <div class="progress-bar">
             <!--${status}-->
             
-            <div class="progress" style="width: ${status=="completed"?"100%":("pending"?"0%":"50%")};"></div>  
+            <div class="progress" style="width: ${status=="APPOINTMENT_CONFIRMED"?100:("REPAIR_IN_PROGRESS"?0:50)}%;"></div>  
             <!--Example: 70% completed--> 
         </div>
         <p><strong>Status:</strong> ${status}</p>

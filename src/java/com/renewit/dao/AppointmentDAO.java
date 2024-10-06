@@ -97,6 +97,20 @@ public class AppointmentDAO {
             e.printStackTrace();
         }
     }
+    
+    //Method to update appointment status
+    public void updateAppointmentStatus(int aid, String status) {
+    String sql = "UPDATE appointments SET status = ? WHERE aid = ?";
+    try (Connection conn = ConnectionPool.getInstance().getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setString(1, status);
+        stmt.setInt(2, aid);
+        stmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
 
     // Method to delete an appointment
       public void deleteAppointment(int aid) {

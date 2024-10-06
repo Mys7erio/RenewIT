@@ -20,6 +20,10 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.renewit.controllers.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateAppointmentStatusServlet</servlet-name>
+        <servlet-class>com.renewit.controllers.UpdateAppointmentStatusServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -39,5 +43,9 @@
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateAppointmentStatusServlet</servlet-name>
+        <url-pattern>/UpdateAppointmentStatusServlet</url-pattern>
     </servlet-mapping>
 </web-app>
