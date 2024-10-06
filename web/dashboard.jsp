@@ -32,7 +32,7 @@
 
         <!-- Example Card 1 -->
         <div class="card">
-            <h2 class="card-title">User: John Doe</h2>
+            <h2 class="card-title">User: </h2>
             <p class="problem-description"><strong>Problem:</strong> Laptop screen not working.</p>
             <div class="status-dropdown">
                 <label for="status1" class="dropdown-label">Update Status:</label>

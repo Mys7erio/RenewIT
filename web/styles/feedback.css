@@ -1,0 +1,60 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 07-Oct-2024, 1:11:58 am
+    Author     : gursi
+*/
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(17, 24, 39, 1); /* Dark background */
+    color: #fff; /* Text color white */
+}
+
+.container {
+    width: 50%;
+    margin: 50px auto;
+    background-color: rgba(31, 41, 55, 1); /* Similar background color to the profile and request form */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #a5b4fc; /* Heading in light blue */
+}
+
+label {
+    font-weight: bold;
+    color: #a5b4fc; /* Label text in light blue */
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px 0px 10px 3px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(75, 85, 99, 1); /* Grey background for input boxes */
+    color: #fff; /* White text color */
+}
+
+input[type="submit"] {
+    background-color: rgba(167, 139, 250, 1); /* Light purple background */
+    color:#050404; /* Grey text for submit button */
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(139, 92, 246, 1); /* Darker purple on hover */
+}
