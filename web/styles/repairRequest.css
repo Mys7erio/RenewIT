@@ -47,7 +47,7 @@ input, select, textarea {
 
 input[type="submit"] {
     background-color: rgba(167, 139, 250, 1); /* Light purple background */
-    color: #9d9e9e; /* Grey text for submit button */
+    color: #f0f0f0; /* Grey text for submit button */
     border: none;
     cursor: pointer;
     padding: 12px;
