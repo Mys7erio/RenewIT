@@ -33,11 +33,9 @@
         </form>
 	
 	<p class="signup">Don't have an account?
-<<<<<<< Updated upstream
-		<a rel="noopener noreferrer" href="signup.jsp" class="">Sign up</a>
-=======
+
 		<a rel="noopener noreferrer" href="./signup.jsp" class="">Sign up</a>
->>>>>>> Stashed changes
+
 	</p>
 </div>
     </body>
