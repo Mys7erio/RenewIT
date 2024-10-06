@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="./loginPage/login.css"/>
+        <link rel="stylesheet" href="./index.css"/>
     </head>
     <body class="login-div">
        <div class="form-container">
