@@ -35,11 +35,15 @@ public class RegisterServlet extends HttpServlet {
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
         String urole = request.getParameter("urole"); // User role
+        
+//        PrintWriter out=response.getWriter();
+//        
+//        out.println(name+password);
 
         // Basic validation
         if (name == null || password == null || email == null) {
             request.setAttribute("errorMessage", "Name, password, and email are required.");
-            request.getRequestDispatcher("/registration.jsp").forward(request, response);
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
             return;
         }
 
@@ -48,6 +52,6 @@ public class RegisterServlet extends HttpServlet {
         userDAO.createUser(name, password, email, address, phone, urole);
         
         // Redirect to a success page or login page
-        response.sendRedirect(request.getContextPath() + "/registrationSuccess.jsp");
+        response.sendRedirect(request.getContextPath() + "/index.jsp");
     }
 }
