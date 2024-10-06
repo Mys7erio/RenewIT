@@ -68,6 +68,13 @@ p {
   margin-top: var(--flow-space, 1em);
 }
 
+.homepage-img{
+    filter: invert(48%) sepia(79%) saturate(346%) hue-rotate(255deg) brightness(708%) contrast(99%);
+    height: 45px;
+    margin-bottom: -0.5rem;
+    width:auto;
+}
+
 .homepage-div{
     display: grid;
     gap: 20px;
