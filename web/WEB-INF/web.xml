@@ -4,8 +4,32 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.renewit.controllers.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookingServlet</servlet-name>
+        <servlet-class>com.renewit.controllers.BookingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServiceCatalogServlet</servlet-name>
+        <servlet-class>com.renewit.controllers.ServiceCatalogServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserProfileServlet</servlet-name>
+        <servlet-class>com.renewit.controllers.UserProfileServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookingServlet</servlet-name>
+        <url-pattern>/BookingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServiceCatalogServlet</servlet-name>
+        <url-pattern>/ServiceCatalogServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserProfileServlet</servlet-name>
+        <url-pattern>/UserProfileServlet</url-pattern>
     </servlet-mapping>
 </web-app>
