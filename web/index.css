@@ -8,6 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 
 html{
     background-color: rgba(17, 24, 39, 1);
@@ -38,8 +39,12 @@ nav li {
  top: 0;
  left: 0;   
 }
- .company-name{
+body .company-name{
     text-align: center;
+    font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 nav li.nav-item {

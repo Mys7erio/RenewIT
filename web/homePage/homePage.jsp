@@ -24,7 +24,8 @@ Document   : homePage
 
             </ul>
         </nav>
-        <h1>SERVICES</h1>
+        <h1><img class="homepage-img" src="./tools.svg" alt="tools and services svg file"/> 
+            SERVICES</h1>
         <h3>Expert Tech Support for All Your Devices.</h3>
         <div class="homepage-div">
             <article class="card">
