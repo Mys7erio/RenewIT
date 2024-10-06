@@ -31,7 +31,7 @@
         </form>
 	
 	<p class="signup">Don't have an account?
-		<a rel="noopener noreferrer" href="./signup/signup.html" class="">Sign up</a>
+		<a rel="noopener noreferrer" href="./signup/signup.jsp" class="">Sign up</a>
 	</p>
 </div>
     </body>
