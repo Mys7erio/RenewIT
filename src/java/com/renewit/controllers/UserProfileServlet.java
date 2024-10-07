@@ -17,6 +17,9 @@ import com.renewit.dao.AppointmentDAO;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Connection;
 import com.renewit.pojo.Appointment;
+import java.util.List;
+import java.util.ArrayList;
+
 
 /**
  *
@@ -85,23 +88,25 @@ public class UserProfileServlet extends HttpServlet {
         UserDAO userDAO = new UserDAO();
         AppointmentDAO appDAO= new AppointmentDAO();
         User user = null;
-        Appointment app=null; 
+        List<Appointment> apps = new ArrayList<>();
 
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             user = userDAO.findUserById(connection, userId); // Assuming a findUserById method is created
-            app = appDAO.getAppointmentByUserId(userId);
+            apps = appDAO.getAllAppointmentsByUserId(user.getId());
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error");
             return;
         }
 
-        if (user != null && app!=null) {
+        if (user != null) {
             request.setAttribute("name", user.getName());
             request.setAttribute("email", user.getEmail());
             request.setAttribute("phoneNumber", user.getPhone());
-            request.setAttribute("itemType", app.getItemType());
-            request.setAttribute("status",app.getStatus());
+            
+            if (apps != null) {
+                request.setAttribute("appointments", apps);
+            }
             
             request.getRequestDispatcher("/Userprofile.jsp").forward(request, response);
         } else {

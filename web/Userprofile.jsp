@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.renewit.pojo.Appointment" %>
+
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,12 +24,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 <div class="profile-container">
     <h1>Repair Status</h1>
     
+    <%
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phoneNumer = request.getParameter("phoneNumber");
+//        String itemType = request.getParameter("itemType");
+        List<Appointment> appointments = (List<Appointment>) request.getAttribute("appointments");
+    %>
+    
     <div class="user-info">
         <h2>User Information</h2>
         <p><strong>Full Name:</strong>${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone Number:</strong>${phoneNumber}</p>
-        <p><strong>Device Type:</strong>${itemType}</p>
+        <p><strong>Repairs:</strong> <%= appointments.size() %> Devices repaired</p>
+        
+        <% if (appointments != null && !appointments.isEmpty()) { %>
+        <p><strong>Repairs:</strong> <%= appointments.size() %> Devices repaired</p>
+    <% } %>
+
     </div>
     
     <div class="repair-status">

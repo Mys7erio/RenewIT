@@ -10,7 +10,6 @@ import com.renewit.pojo.User;
 import java.io.PrintWriter;
 import com.renewit.dao.UserDAO;
 
-
 /**
  * LoginServlet for handling user login.
  */
@@ -32,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 
     // Handles the HTTP <code>POST</code> method.
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -40,25 +39,30 @@ public class LoginServlet extends HttpServlet {
         // Find user by name
         User user = userDAO.findUserByName(username);
         PrintWriter out = response.getWriter();
-                    out.println(user.getName());
-                    out.println(user.getPassword());
-                    out.println(username);
-                    out.println(password);
 
-        if (user != null && (password.equals(user.getPassword()))) {
-            // Create session and store user details
-            HttpSession session = request.getSession();
+        if (user != null) {
+            if (password.equals(user.getPassword())) {
+                // Create session and store user details
+                HttpSession session = request.getSession();
 
-            session.setAttribute("userId", user.getId());
-            session.setAttribute("username", user.getName());
-            session.setAttribute("urole", user.getUrole());
-            if(user.getUrole().equals("admin")){
-                response.sendRedirect("dashboard.jsp");
-            }else{
-            response.sendRedirect("homePage.jsp");
+                session.setAttribute("userId", user.getId());
+                session.setAttribute("username", user.getName());
+                session.setAttribute("urole", user.getUrole());
+
+                if (user.getUrole().equals("admin")) {
+                    response.sendRedirect("dashboard.jsp");
+                } else {
+                    response.sendRedirect("homePage.jsp");
+                }
+            } else {
+                out.println("<script>");
+                out.println("alert('Invalid Credentials');");
+                out.println("setTimeout(function() { window.location.href='index.jsp'; }, 100);"); // Redirect after 3 seconds
+                out.println("</script>");
             }
+
         } else {
-            request.setAttribute("errorMessage", "Invalid username or password.");
+            request.setAttribute("errorMessage", "Invalid username.");
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }

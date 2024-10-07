@@ -51,7 +51,7 @@ html form .login-div{
   border: 1px solid rgba(55, 65, 81, 1);
   outline: 0;
   background-color: rgba(17, 24, 39, 1);
-  padding: 0.75rem 0rem;
+  padding: 1rem 0.5rem;
   color: rgba(243, 244, 246, 1);
 }
 
@@ -88,6 +88,7 @@ html form .login-div{
   border: none;
   border-radius: 0.375rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .line {
