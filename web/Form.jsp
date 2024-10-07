@@ -13,10 +13,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electronic Repair Request Form</title>
     <link rel="stylesheet" href="./styles/Form.css">
+        <link rel="stylesheet" href="index.css" />
+
 </head>
 <body>
+    <h3 style="text-align: left; padding-left: 20px" class="company-name">RenewIT</h3>
+    <nav style="position: absolute; top: 0; right:0; padding: 20px;">
+            <ul>
+                <li class="nav-item"><a href="/homePage.jsp">Services</a></li>
+                <li class="nav-item"><a href="UserProfileServlet">Profile</a></li>
 
-<div class="container">
+            </ul>
+        </nav>
+
+<div class="container"style="margin-top: 8rem;">
     <h1>Electronic Repair Request Form</h1>
     <form action="BookingServlet" method="post">
         
@@ -37,6 +47,9 @@
         
         <label for="preferredTime">Preferred Service Time:</label>
         <input type="time" id="preferredTime" name="preferredTime" required>
+        
+        <label for="preferredTime">Upload image</label>
+        <input type="file" id="#" name="#" style="background-color:  rgba(75, 85, 99, 1);" required>
 
         <input type="submit" value="Submit Request">
     </form>
