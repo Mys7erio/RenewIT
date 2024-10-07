@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String check = request.getParameter("admin"); // User role
         String urole=" ";
-        if(check=="0")
+        if(check!=null)
             urole="admin";
         else
             urole="user";
