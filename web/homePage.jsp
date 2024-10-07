@@ -42,7 +42,7 @@ Document   : homePage
         Experienced technicians provide diagnostics, repairs, and upgrades for all types of computers and laptops.
       </p>
     </div>
-      <button class="card__button"><a style="text-decoration: none" href= "./Form.jsp">Book Service</a></button>
+      <button class="card__button"><a style="text-decoration: none" href= "./ComputerForm.jsp">Book Service</a></button>
   </div>
 </article>
             <article class="card">
@@ -60,7 +60,7 @@ Document   : homePage
         Expert technicians diagnose and repair all types of mobile devices, from smartphones to tablets, quickly and efficiently.
       </p>
     </div>
-    <button class="card__button"><a style="text-decoration: none" href= "./Form.jsp">Book Service</a></button>
+    <button class="card__button"><a style="text-decoration: none" href= "./MobileForm.jsp">Book Service</a></button>
   </div>
 </article>
             <article class="card">
@@ -78,7 +78,7 @@ Document   : homePage
         Specialized technicians offer expert repairs, and upgrades for all major gaming consoles and accessories.
       </p>
     </div>
-    <button class="card__button"><a style="text-decoration: none" href= "./Form.jsp">Book Service</a></button>
+    <button class="card__button"><a style="text-decoration: none" href= "./GamingForm.jsp">Book Service</a></button>
   </div>
 </article>
         </div>

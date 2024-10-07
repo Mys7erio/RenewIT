@@ -29,6 +29,11 @@
 <div class="container"style="margin-top: 8rem;">
     <h1>Electronic Repair Request Form</h1>
     <form action="BookingServlet" method="post">
+        <select id="item_type" name="item_type" style="visibility: hidden;">
+        <option default value="computers">computers</option>
+        <option value="mobile">mobile</option>
+        <option value="gaming console">gaming console</option>
+    </select>
         
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
