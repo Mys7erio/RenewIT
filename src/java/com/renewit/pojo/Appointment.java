@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.renewit.pojo;
-import java.sql.Timestamp;
+import java.sql.Time;
 import java.sql.Date;
 /**
  *
@@ -104,16 +104,20 @@ public class Appointment {
         this.issueDescription = issueDescription;
     }
 
-    public String getPreferredDate() {
-        return preferredDate;
+    public Date getPreferredDate() {
+        return Date.valueOf(this.preferredDate);
     }
 
     public void setPreferredDate(String preferredDate) {
         this.preferredDate = preferredDate;
     }
 
-    public String getPreferredTime() {
-        return preferredTime;
+    public Time getPreferredTime() {
+        try {
+                    return Time.valueOf(this.preferredTime);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid time format: " + this.preferredTime, e);
+        }
     }
 
     public void setPreferredTime(String preferredTime) {
