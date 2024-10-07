@@ -21,6 +21,9 @@ Document   : homePage
                 <li class="nav-item"><a href="#">Services</a></li>
                 <li class="nav-item"><a href="UserProfileServlet">Profile</a></li>
 
+                <form action="LogoutServlet" method="POST" style="width: 8rem;">
+                    <button type="submit" class="sign" >Logout</button>
+                </form>
             </ul>
         </nav>
         <h1><img class="homepage-img" src="styles/tools.svg" alt="services"/> 
@@ -42,7 +45,7 @@ Document   : homePage
         Experienced technicians provide diagnostics, repairs, and upgrades for all types of computers and laptops.
       </p>
     </div>
-      <button class="card__button"><a style="text-decoration: none" href= "./Form.jsp">Book Service</a></button>
+      <button class="card__button"><a style="text-decoration: none" href= "./ComputerForm.jsp">Book Service</a></button>
   </div>
 </article>
             <article class="card">
@@ -60,7 +63,7 @@ Document   : homePage
         Expert technicians diagnose and repair all types of mobile devices, from smartphones to tablets, quickly and efficiently.
       </p>
     </div>
-    <button class="card__button"><a style="text-decoration: none" href= "./Form.jsp">Book Service</a></button>
+    <button class="card__button"><a style="text-decoration: none" href= "./MobileForm.jsp">Book Service</a></button>
   </div>
 </article>
             <article class="card">
@@ -78,7 +81,7 @@ Document   : homePage
         Specialized technicians offer expert repairs, and upgrades for all major gaming consoles and accessories.
       </p>
     </div>
-    <button class="card__button"><a style="text-decoration: none" href= "./Form.jsp">Book Service</a></button>
+    <button class="card__button"><a style="text-decoration: none" href= "./GamingForm.jsp">Book Service</a></button>
   </div>
 </article>
         </div>

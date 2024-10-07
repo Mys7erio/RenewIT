@@ -14,11 +14,8 @@
     <div class="container">
         <h3 style="text-align:left;" class="company-name">RenewIT</h3>
         <nav>
-            
             <ul>
-                <!--<li class="nav-item"><a href="#">Services</a></li>-->
                 <li style="left:0" class="nav-item"><a href="UserProfileServlet">Profile</a></li>
-
             </ul>
         </nav>
         <h1 class="dashboard-title">Admin Dashboard</h1>
@@ -27,37 +24,40 @@
             // Create an instance of AppointmentDAO
             AppointmentDAO appointmentDAO = new AppointmentDAO();
             // Retrieve all appointments
-            List<Appointment> appointments = appointmentDAO.getAllAppointments();
+            List<Appointment> appointments = appointmentDAO.getAllAppointments(); // Fetch appointments from the DAO
+            request.setAttribute("appointments", appointments); // Set the appointments in request scope
+
+            if (appointments != null && !appointments.isEmpty()) {
+                for (Appointment appointment : appointments) {
         %>
+                    <div class="card">
+                        <h2 class="card-title">Appointment ID: <%= appointment.getAid() %></h2>
+                        <p><strong>User ID:</strong> <%= appointment.getUid() %></p>
+                        <p><strong>Item Type:</strong> <%= appointment.getItemType() %></p>
+                        <p><strong>Status:</strong> <%= appointment.getStatus() %></p>
+                        <p><strong>Repair Cost:</strong> $<%= appointment.getRepairCost() %></p>
 
-        <c:if test="${not empty appointments}">
-            <c:forEach var="appointment" items="${appointments}">
-                <div class="card">
-                    <h2 class="card-title">Appointment ID: ${appointment.aid}</h2>
-                    <p><strong>User ID:</strong> ${appointment.uid}</p>
-                    <p><strong>Item Type:</strong> ${appointment.itemType}</p>
-                    <p><strong>Status:</strong> ${appointment.status}</p>
-                    <p><strong>Repair Cost:</strong> $${appointment.repairCost}</p>
-
-                    <form action="UpdateAppointmentStatusServlet" method="post">
-                        <input type="hidden" name="appointmentId" value="${appointment.aid}" />
-                        <div class="status-dropdown">
-                            <label for="status${appointment.aid}" class="dropdown-label">Update Status:</label>
-                            <select id="status${appointment.aid}" name="status" class="dropdown-select">
-                                <option value="APPOINTMENT_CONFIRMED" ${appointment.status == 'APPOINTMENT_CONFIRMED' ? 'selected' : ''}>Confirmed</option>
-                                <option value="REPAIR_IN_PROGRESS" ${appointment.status == 'REPAIR_IN_PROGRESS' ? 'selected' : ''}>In Progress</option>
-                                <option value="REPAIR_SUCCESS" ${appointment.status == 'REPAIR_SUCCESS' ? 'selected' : ''}>Completed</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="submit-btn">Submit</button>
-                    </form>
-                </div>
-            </c:forEach>
-        </c:if>
-
-        <c:if test="${empty appointments}">
-            <p>No appointments found.</p>
-        </c:if>
+                        <form action="UpdateAppointmentStatusServlet" method="post">
+                            <input type="hidden" name="appointmentId" value="<%= appointment.getAid() %>" />
+                            <div class="status-dropdown">
+                                <label for="status<%= appointment.getAid() %>" class="dropdown-label">Update Status:</label>
+                                <select id="status<%= appointment.getAid() %>" name="status" class="dropdown-select">
+                                    <option value="APPOINTMENT_CONFIRMED" <%= appointment.getStatus().equals("APPOINTMENT_CONFIRMED") ? "selected" : "" %>>Confirmed</option>
+                                    <option value="REPAIR_IN_PROGRESS" <%= appointment.getStatus().equals("REPAIR_IN_PROGRESS") ? "selected" : "" %>>In Progress</option>
+                                    <option value="REPAIR_SUCCESS" <%= appointment.getStatus().equals("REPAIR_SUCCESS") ? "selected" : "" %>>Completed</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="submit-btn">Submit</button>
+                        </form>
+                    </div>
+        <%
+                }
+            } else {
+        %>
+                <p>No appointments found.</p>
+        <%
+            }
+        %>
     </div>
 </body>
 </html>

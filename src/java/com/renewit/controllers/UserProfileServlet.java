@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.renewit.pojo.User;
 import com.renewit.dao.UserDAO;
+//import jakarta.servlet.annotation.WebServlet;
 import com.renewit.dao.AppointmentDAO;
 import jakarta.servlet.http.HttpSession;
 import java.sql.Connection;
@@ -25,6 +26,8 @@ import java.util.ArrayList;
  *
  * @author joyfd
  */
+
+//@WebServlet("/profile")
 public class UserProfileServlet extends HttpServlet {
 
     /**
@@ -71,6 +74,7 @@ public class UserProfileServlet extends HttpServlet {
 
         // Retrieve a session variable
         Integer userId = (Integer) session.getAttribute("userId");
+        String urole= (String)session.getAttribute("urole");
                 
 
         if (userId == null) {
@@ -92,7 +96,10 @@ public class UserProfileServlet extends HttpServlet {
 
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             user = userDAO.findUserById(connection, userId); // Assuming a findUserById method is created
+            if(urole.equals("user"))
             apps = appDAO.getAllAppointmentsByUserId(user.getId());
+            else if(urole.equals("admin"))
+            apps = appDAO.getAllAppointments();    
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error");
