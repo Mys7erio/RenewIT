@@ -16,28 +16,53 @@ import com.renewit.pojo.Appointment;
 public class AppointmentDAO {
 
     // Method to add a new appointment
-    public void addAppointment(Appointment appointment) {
-        String sql = "INSERT INTO appointments (uid, item_type, status, repair_cost) VALUES (?, ?, ?, ?)";
+    public boolean addAppointment(Appointment appointment) {
+        String sql = "INSERT INTO appointments (uid, item_type, status, repair_cost, device_model, issue_description, preferred_date, preferred_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, appointment.getUid());
             stmt.setString(2, appointment.getItemType());
             stmt.setString(3, appointment.getStatus());
             stmt.setDouble(4, appointment.getRepairCost());
-            stmt.executeUpdate();
+            stmt.setString(5, appointment.getDeviceModel()); // Fixed the deviceModel setter
+            stmt.setString(6, appointment.getIssueDescription()); // Fixed issueDescription setter
+            stmt.setString(7, appointment.getPreferredDate()); // Convert LocalDateTime to Timestamp
+            stmt.setString(8, appointment.getPreferredTime()); // Convert LocalTime to Time
+            if(stmt.executeUpdate()>0){
+                return true;
+            }
+            
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
+        return false;
     }
+    
 
     // Method to get an appointment by its ID
-    public Appointment getAppointmentById(int aid) {
+ public List<Appointment> getAppointmentById(int aid) {
+        List<Appointment> appointments = new ArrayList<>();
+
         String sql = "SELECT * FROM appointments WHERE aid = ?";
         try (Connection conn = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, aid);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return new Appointment(rs.getInt("aid"), rs.getInt("uid"), rs.getString("item_type"),
-                        rs.getString("status"), rs.getDouble("repair_cost"));
+                 while (rs.next()) {
+                appointments.add(new Appointment(
+//                        rs.getInt("aid"),
+                        rs.getInt("uid"),
+                        rs.getString("item_type"),
+                        rs.getString("status"),
+                        rs.getDouble("repair_cost"),
+                        rs.getString("device_model"),
+                        rs.getString("issue_description"),
+                        rs.getString("preferred_date"), // Convert Timestamp to LocalDateTime
+                        rs.getString("preferred_time") // Convert Time to LocalTime
+                )
+                );
+                       
+                        }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,14 +71,27 @@ public class AppointmentDAO {
     }
 
     // Method to get an appointment by user ID
-    public Appointment getAppointmentByUserId(int uid) {
+ public List<Appointment> getAppointmentByUserId(int uid) {
+         List<Appointment> appointments = new ArrayList<>();
         String sql = "SELECT * FROM appointments WHERE uid = ?";
         try (Connection conn = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, uid);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return new Appointment(rs.getInt("aid"), rs.getInt("uid"), rs.getString("item_type"),
-                        rs.getString("status"), rs.getDouble("repair_cost"));
+                 while (rs.next()) {
+                appointments.add(new Appointment(
+                        
+                        rs.getInt("uid"),
+                        rs.getString("item_type"),
+                        rs.getString("status"),
+                        rs.getDouble("repair_cost"),
+                        rs.getString("device_model"),
+                        rs.getString("issue_description"),
+                        rs.getString("preferred_date"), // Convert Timestamp to LocalDateTime
+                        rs.getString("preferred_time")
+                )
+               );
+             }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,8 +105,16 @@ public class AppointmentDAO {
         String sql = "SELECT * FROM appointments";
         try (Connection conn = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                appointments.add(new Appointment(rs.getInt("aid"), rs.getInt("uid"), rs.getString("item_type"),
-                        rs.getString("status"), rs.getDouble("repair_cost")));
+                appointments.add(new Appointment(
+                        rs.getInt("uid"),
+                        rs.getString("item_type"),
+                        rs.getString("status"),
+                        rs.getDouble("repair_cost"),
+                        rs.getString("device_model"),
+                        rs.getString("issue_description"),
+                        rs.getString("preferred_date"), // Convert Timestamp to LocalDateTime
+                        rs.getString("preferred_time")
+                ));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,22 +122,26 @@ public class AppointmentDAO {
         return appointments;
     }
 
+    // Method to get all appointments by user ID
     public List<Appointment> getAllAppointmentsByUserId(int uid) {
         List<Appointment> appointments = new ArrayList<>();
         String sql = "SELECT * FROM appointments WHERE uid = ?";
 
         try (Connection conn = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, uid); // Set the UID parameter here
+            stmt.setInt(1, uid);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     appointments.add(new Appointment(
-                            rs.getInt("aid"),
+                          
                             rs.getInt("uid"),
                             rs.getString("item_type"),
                             rs.getString("status"),
-                            rs.getDouble("repair_cost")
+                            rs.getDouble("repair_cost"),
+                            rs.getString("device_model"),
+                            rs.getString("issue_description"),
+                            rs.getString("preferred_date"), // Convert Timestamp to LocalDateTime
+                            rs.getString("preferred_time")
                     ));
                 }
             }
@@ -99,42 +149,34 @@ public class AppointmentDAO {
             e.printStackTrace();
         }
 
-        return appointments; // Return the list of appointments (could be empty)
+        return appointments;
     }
 
     // Method to update an appointment
-    public void updateAppointment(Appointment appointment) {
-        String sql = "UPDATE appointments SET uid = ?, item_type = ?, status = ?, repair_cost = ? WHERE aid = ?";
-        try (Connection conn = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, appointment.getUid());
-            stmt.setString(2, appointment.getItemType());
-            stmt.setString(3, appointment.getStatus());
-            stmt.setDouble(4, appointment.getRepairCost());
-            stmt.setInt(5, appointment.getAid());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void updateAppointment(Appointment appointment) {
+//        String sql = "UPDATE appointments SET uid = ?, item_type = ?, status = ?, repair_cost = ?, device_model = ?, issue_description = ?, preferred_date = ?, preferred_time = ? WHERE aid = ?";
+//        try (Connection conn = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+//            stmt.setInt(1, appointment.getUid());
+//            stmt.setString(2, appointment.getItemType());
+//            stmt.setString(3, appointment.getStatus());
+//            stmt.setDouble(4, appointment.getRepairCost());
+//            stmt.setString(5, appointment.getDeviceModel());
+//            stmt.setString(6, appointment.getIssueDescription());
+//            stmt.setTimestamp(7, Timestamp.valueOf(appointment.getPreferredDate()));
+//            stmt.setTime(8, Time.valueOf(appointment.getPreferredTime()));
+//            stmt.setInt(9, appointment.getAid());
+//            stmt.executeUpdate();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    //Method to update appointment status
+    // Method to update appointment status
     public void updateAppointmentStatus(int aid, String status) {
         String sql = "UPDATE appointments SET status = ? WHERE aid = ?";
         try (Connection conn = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, status);
             stmt.setInt(2, aid);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
-        //Method to update appointment feedback
-    public void updateAppointmentFeedback(String email, int feedback) {
-        String sql = "UPDATE appointments SET status = ? WHERE email = ?";
-        try (Connection conn = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, feedback);
-            stmt.setString(2, email);
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
