@@ -17,10 +17,9 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author joyfd
  */
-
 //@WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
-    
+
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,8 +29,14 @@ public class LogoutServlet extends HttpServlet {
             session.invalidate(); // End the session
         }
 
-        // Redirect to the login page
-        response.sendRedirect("index.jsp"); // Adjust the path according to your project structure
+        // Set content type for response
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        // Create a JavaScript alert and redirect
+        out.println("<script type='text/javascript'>");
+        out.println("alert('You have been logged out successfully.');");
+        out.println("setTimeout(function() { window.location.href='index.jsp'; }, 100);");
+        out.println("</script>");
     }
 }
-

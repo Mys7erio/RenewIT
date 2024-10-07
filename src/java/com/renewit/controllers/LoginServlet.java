@@ -15,7 +15,6 @@ import com.renewit.dao.UserDAO;
  * LoginServlet for handling user login.
  */
 //@WebServlet("/login")
-
 public class LoginServlet extends HttpServlet {
 
     private UserDAO userDAO;
@@ -51,16 +50,16 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("userId", user.getId());
                 session.setAttribute("username", user.getName());
                 session.setAttribute("urole", user.getUrole());
-                
+
                 if (user.getUrole().equals("admin")) {
                     response.sendRedirect("dashboard.jsp");
-                } else{
+                } else {
                     response.sendRedirect("homePage.jsp");
                 }
             } else {
-                out.println("<script>");
+                out.println("<script type='text/javascript'>");
                 out.println("alert('Invalid Credentials');");
-                out.println("setTimeout(function() { window.location.href='index.jsp'; }, 100);"); // Redirect after 3 seconds
+                out.println("setTimeout(function() { window.location.href='index.jsp'; }, 100);");
                 out.println("</script>");
             }
 
