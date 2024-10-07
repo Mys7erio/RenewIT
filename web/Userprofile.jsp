@@ -50,7 +50,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <div class="progress-bar">
             <!--${status}-->
             
-            <div class="progress" style="width: ${status=="APPOINTMENT_CONFIRMED"?100:("REPAIR_IN_PROGRESS"?0:50)}%;"></div>  
+            <div class="progress" style="width: ${status=="APPOINTMENT_CONFIRMED"?100:("REPAIR_IN_PROGRESS"?50:0)}%;"></div>  
             <!--Example: 70% completed--> 
         </div>
         <p><strong>Status:</strong> ${status}</p>
@@ -59,8 +59,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <div class="cost-details">
         <h2>Cost and Delivery Information</h2>
         <p><strong>Estimated Cost:</strong> $150</p>
-        <p><strong>Estimated Delivery Date:</strong> 10-Oct-2024</p>
+        <p style="visibility:"><strong>Estimated Delivery Date:</strong> 10-Oct-2024</p>
     </div>
+    <button style="visibility: ${status=="REPAIR_SUCCESS"?"display":"hidden"}"><a href="./feedback.jsp">Feedback</a></button>
+
     
 </div>
 
