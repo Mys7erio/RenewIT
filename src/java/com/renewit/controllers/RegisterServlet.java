@@ -34,7 +34,12 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
-        String urole = request.getParameter("urole"); // User role
+        String check = request.getParameter("admin"); // User role
+        String urole=" ";
+        if(check=="0")
+            urole="admin";
+        else
+            urole="user";
         
 //        PrintWriter out=response.getWriter();
 //        

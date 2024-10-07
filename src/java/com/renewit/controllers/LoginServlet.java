@@ -48,10 +48,10 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("userId", user.getId());
                 session.setAttribute("username", user.getName());
                 session.setAttribute("urole", user.getUrole());
-
+                
                 if (user.getUrole().equals("admin")) {
                     response.sendRedirect("dashboard.jsp");
-                } else {
+                } else{
                     response.sendRedirect("homePage.jsp");
                 }
             } else {
@@ -63,6 +63,7 @@ public class LoginServlet extends HttpServlet {
 
         } else {
             request.setAttribute("errorMessage", "Invalid username.");
+            out.println(request.getAttribute("errorMessage"));
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
