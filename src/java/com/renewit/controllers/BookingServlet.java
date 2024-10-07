@@ -9,8 +9,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.PrintWriter;
+import java.util.Random;
 
 public class BookingServlet extends HttpServlet {
+
+    Random random = new Random();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -26,6 +29,7 @@ public class BookingServlet extends HttpServlet {
         String itemType = request.getParameter("itemType");
         String preferredDate = request.getParameter("preferredDate");
         String preferredTime = request.getParameter("preferredTime");
+        int repairCost = 0;
 
         // To add seconds to the user input. Without adding seconds, we can't convert it to the correct postgress format
         preferredTime += ":00";
@@ -36,9 +40,20 @@ public class BookingServlet extends HttpServlet {
         appointment.setDeviceModel(deviceModel);
         appointment.setIssueDescription(issueDescription);
         appointment.setItemType(itemType);
-        appointment.setRepairCost(750);
         appointment.setPreferredDate(preferredDate);
         appointment.setPreferredTime(preferredTime);
+
+        if (appointment.getItemType().equals("phones")) {
+            repairCost = random.nextInt(201) + 300; // Corrected range: 300 to 500
+        } else if (appointment.getItemType().equals("laptops")) {
+            repairCost = random.nextInt(5501) + 2500; // Corrected range: 2500 to 8000
+        } else if (appointment.getItemType().equals("gaming consoles")) {
+            repairCost = random.nextInt(3101) + 900; // Corrected range: 900 to 4000
+        }
+
+        repairCost -= (repairCost % 50); // round off to nearest 50
+        appointment.setRepairCost(repairCost);
+
         // Create an instance of AppointmentDAO
         AppointmentDAO appointmentDAO = new AppointmentDAO();
 
@@ -47,12 +62,8 @@ public class BookingServlet extends HttpServlet {
             // Use the DAO to insert the appointment into the database
             boolean isInserted = appointmentDAO.addAppointment(appointment);
 
-            //Send response back to the client based on the result of the insertion
+            // Send response back to the client based on the result of the insertion
             response.setContentType("text/html;charset=UTF-8");
-            out.println("<script>");
-            out.println("alert('You'll be redirected shortly);");
-            out.println("setTimeout(function() { window.location.href='homePage.jsp'; }, 100);"); // Redirect after 3 seconds
-            out.println("</script>");
 
             if (isInserted) {
                 out.println("<h1>Booking Successful</h1>");
@@ -61,6 +72,11 @@ public class BookingServlet extends HttpServlet {
                 out.println("<h1>Booking Failed</h1>");
                 out.println("<p>There was an issue processing your booking. Please try again later.</p>");
             }
+
+            out.println("<script>");
+            out.println("alert('Thank you for using our services. You will be redirected shortly');");
+            out.println("setTimeout(function() { window.location.href='homePage.jsp'; }, 2000);");
+            out.println("</script>");
 
         } catch (Exception e) {
             out.println(e.getMessage());

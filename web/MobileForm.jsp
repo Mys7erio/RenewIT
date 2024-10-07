@@ -29,11 +29,6 @@
         <div class="container"style="margin-top: 8rem;">
             <h1>Electronic Repair Request Form</h1>
             <form action="BookingServlet" method="post">
-<!--                <select id="item_type" name="item_type" style="visibility: hidden;">
-                    <option value="computers">computers</option>
-                    <option default value="mobile">mobile</option>
-                    <option value="gaming console">gaming console</option>
-                </select>-->
 
                 <input type="hidden" name="itemType" value="phones" /> 
 
