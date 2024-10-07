@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+//import jakarta.servlet.annotation.WebServlet;
 import com.renewit.pojo.User;
 import java.io.PrintWriter;
 import com.renewit.dao.UserDAO;
@@ -13,6 +14,8 @@ import com.renewit.dao.UserDAO;
 /**
  * LoginServlet for handling user login.
  */
+//@WebServlet("/login")
+
 public class LoginServlet extends HttpServlet {
 
     private UserDAO userDAO;

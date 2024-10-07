@@ -10,7 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+//import jakarta.servlet.annotation.WebServlet;
 /**
  *
  * @author joyfd
@@ -21,7 +21,7 @@ import com.renewit.dao.UserDAO;
 
 import java.io.IOException;
 
-
+//@WebServlet("/signup")
 public class RegisterServlet extends HttpServlet {
 
     @Override
