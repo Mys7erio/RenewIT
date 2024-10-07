@@ -21,6 +21,9 @@ Document   : homePage
                 <li class="nav-item"><a href="#">Services</a></li>
                 <li class="nav-item"><a href="UserProfileServlet">Profile</a></li>
 
+                <form action="logout" method="POST" style="width: 8rem;">
+                    <button type="submit" class="sign" >Logout</button>
+                </form>
             </ul>
         </nav>
         <h1><img class="homepage-img" src="styles/tools.svg" alt="services"/> 
