@@ -12,6 +12,15 @@
 </head>
 <body>
     <div class="container">
+        <h3 style="text-align:left;" class="company-name">RenewIT</h3>
+        <nav>
+            
+            <ul>
+                <!--<li class="nav-item"><a href="#">Services</a></li>-->
+                <li style="left:0" class="nav-item"><a href="UserProfileServlet">Profile</a></li>
+
+            </ul>
+        </nav>
         <h1 class="dashboard-title">Admin Dashboard</h1>
 
         <%
