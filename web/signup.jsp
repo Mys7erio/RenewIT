@@ -42,7 +42,7 @@
     </label>
       <div class="checkbox-container">
                    <label>
-                    <input type="checkbox" name="admin" id="admin" value="1">
+                    <input type="radio" name="admin" id="admin" value="1">
                     Admin
                   </label>
 

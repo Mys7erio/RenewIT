@@ -4,6 +4,7 @@
  */
 package com.renewit.controllers;
 
+import com.renewit.dao.AppointmentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -26,6 +27,16 @@ public class BookingServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+        String phone = request.getParameter("phone");
+        String deviceModel = request.getParameter("devicemodel");
+        String issueDescription = request.getParameter("issue");
+        String serviceDate = request.getParameter("issue");
+        String preferredDate = request.getParameter("preferredDate");
+        String preferredTime = request.getParameter("preferredTime");
+    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
