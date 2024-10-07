@@ -18,9 +18,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
     <title>User Profile - Repair Status</title>
     <link rel="stylesheet" href="styles/Userprofile.css">
+    <link rel="stylesheet" href="./index.css" />
 </head>
 <body>
+<h3 style="text-align: left; padding-left: 40px" class="company-name">RenewIT</h3>
+        <nav style="position: absolute; top: 0; right:0; padding: 40px;">
+            
+            <ul>
+                <li class="nav-item"><a href="./homePage.jsp">Services</a></li>
+                <li class="nav-item"><a href="UserProfileServlet">Profile</a></li>
 
+                <form action="LogoutServlet" method="POST" style="width: 8rem;">
+                    <button type="submit" style=" width: 100%;
+  background-color: rgba(167, 139, 250, 1);
+  padding: 0.75rem;
+  text-align: center;
+  color: rgba(17, 24, 39, 1);
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-end;" >Logout</button>
+                </form>
+            </ul>
+        </nav>
+    
 <div class="profile-container">
     <h1>Repair Status</h1>
     
