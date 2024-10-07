@@ -128,6 +128,18 @@ public class AppointmentDAO {
             e.printStackTrace();
         }
     }
+    
+        //Method to update appointment feedback
+    public void updateAppointmentFeedback(String email, int feedback) {
+        String sql = "UPDATE appointments SET status = ? WHERE email = ?";
+        try (Connection conn = ConnectionPool.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, feedback);
+            stmt.setString(2, email);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     // Method to delete an appointment
     public void deleteAppointment(int aid) {

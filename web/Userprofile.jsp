@@ -37,11 +37,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <p><strong>Full Name:</strong>${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone Number:</strong>${phoneNumber}</p>
-        <p><strong>Repairs:</strong> <%= appointments.size() %> Devices repaired</p>
+        
         
         <% if (appointments != null && !appointments.isEmpty()) { %>
         <p><strong>Repairs:</strong> <%= appointments.size() %> Devices repaired</p>
-    <% } %>
+    <% } else{%>
+    <p><strong>Repairs:</strong> <%= appointments.size() %> Devices repaired</p>
+    <%}%>
 
     </div>
     
